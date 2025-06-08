@@ -1,4 +1,9 @@
 <template>
+  <head>
+    <title>
+      Playlistr
+      </title>
+  </head>
   <div id="app" class="playlistr-app">
     <div class="app-container">
       <header class="app-header">
