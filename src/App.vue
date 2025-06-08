@@ -101,7 +101,7 @@
           Get in touch!
         </a>
       </footer>
-    </div>
+    
   </div>
 </template>
 
