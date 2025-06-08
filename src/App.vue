@@ -80,12 +80,11 @@
           </div>
         </div>
       </main>
-      <p
-  v-if="userMessage"
-  class="text-center text-red-400 mt-6 font-medium animate-pulse"
->
-  {{ userMessage }}
-</p>
+
+      <p v-if="userMessage" class="text-center text-red-400 mt-6 font-medium animate-pulse">
+        {{ userMessage }}
+      </p>
+
       <transition name="fade">
         <div v-if="error" class="error-message">
           <svg class="error-icon" viewBox="0 0 24 24" fill="#FF6B6B">
@@ -94,14 +93,14 @@
           {{ error }}
         </div>
       </transition>
-    </div>
-    <footer class="developer-info">
+
+      <footer class="developer-info">
         <h4>Made with 💚 by Sufyan</h4>
         <a class="linkedInButton" href="http://linkedin.com/in/sufyanshaik03/" target="_blank" rel="noopener noreferrer">
           Get in touch!
         </a>
       </footer>
-    
+    </div>
   </div>
 </template>
 
