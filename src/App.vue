@@ -95,6 +95,11 @@
         </div>
       </transition>
     </div>
+    <div class="developer-info">
+      <h2>Made by Sufyan :)</h2>
+      <h3>Get in touch with me !</h3>
+      <a class = "linkedInButton" href="linkedin.com/in/sufyanshaik03/">LinkedIn</a>
+    </div>
   </div>
 </template>
 
@@ -517,6 +522,40 @@ h3 {
 .error-icon {
   width: 20px;
   height: 20px;
+}
+.developer-info {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 2px solid #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.developer-info h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.developer-info h3 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.linkedInButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0077b5; 
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.linkedInButton:hover {
+  background-color: #005582;
 }
 
 @keyframes fadeIn {
