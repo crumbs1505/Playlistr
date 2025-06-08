@@ -34,7 +34,8 @@ For Indian music requests specifically:
 - Recognize common Indian music terms (e.g., "filmy" = bollywood, "desi" = contemporary indian pop)
 - For party requests, default to upbeat, danceable tracks unless specified otherwise
 If an artist or several artists are mentioned , just identify the artists in the prompt and fill the artists section with their names and identify the genre the artists are famous for and fill that in.
-If at any point you cannot find or derive any of the parameteres just ignore and move on. If any typing erros are made with artist names , identify the closest one and consider that as your artist
+If at any point you cannot find or derive any of the parameteres just ignore and move on. If any typing erros are made with artist names , identify the closest one and consider that as your artist.
+Keep in mind that your output will be the input in the search bar , which is just a concatenation of the individual json attributes , so make the json attributes in such a way that when combined they make a coherent query ( avoid over population )
 Format your response as JSON with ONLY these fields (omit any empty categories):
 {
   "genre": "",
