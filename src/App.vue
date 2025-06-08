@@ -95,10 +95,12 @@
         </div>
       </transition>
     </div>
-    <div class="developer-info">
-      <h2>Made by Sufyan :)</h2>
-      <h3>Get in touch with me !</h3>
-      <a class = "linkedInButton" href="linkedin.com/in/sufyanshaik03/">LinkedIn</a>
+    <footer class="developer-info">
+        <h4>Made with 💚 by Sufyan</h4>
+        <a class="linkedInButton" href="http://linkedin.com/in/sufyanshaik03/" target="_blank" rel="noopener noreferrer">
+          Get in touch!
+        </a>
+      </footer>
     </div>
   </div>
 </template>
@@ -525,37 +527,35 @@ h3 {
 }
 .developer-info {
   text-align: center;
-  margin-top: 40px;
-  padding: 20px;
-  border-top: 2px solid #e0e0e0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--spotify-dark-gray);
 }
 
-.developer-info h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.developer-info h3 {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 20px;
+.developer-info h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--spotify-gray);
+  margin-bottom: 1rem;
 }
 
 .linkedInButton {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #0077b5; 
-  color: white;
+  padding: 0.5rem 1.25rem;
+  background-color: transparent;
+  color: var(--spotify-light);
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  border-radius: 500px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid var(--spotify-dark-gray);
 }
 
 .linkedInButton:hover {
-  background-color: #005582;
+  background-color: var(--spotify-green);
+  border-color: var(--spotify-green);
+  color: var(--spotify-light);
+  transform: scale(1.05);
 }
 
 @keyframes fadeIn {
