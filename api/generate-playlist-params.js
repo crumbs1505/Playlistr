@@ -1,4 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
+export const config = {
+  runtime: 'nodejs',
+};
 
 const genAI = new GoogleGenAI(process.env.GEMINI_API_KEY);
 
