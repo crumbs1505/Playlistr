@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 
 const genAI = new GoogleGenAI(process.env.GEMINI_API_KEY);
 
@@ -65,7 +65,7 @@ Example response:
     });
 
     const text = result.text;
-    let cleanedText = text.replace(/``````/g, '').trim();
+    let cleanedText = text.replace(/```json|```/g, '').trim();
     let playlistParams;
     try {
       playlistParams = JSON.parse(cleanedText);
