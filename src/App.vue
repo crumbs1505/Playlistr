@@ -146,6 +146,7 @@ const extractTokensFromUrl = () => {
     } else if (error.value) {
       error.value = `Connection failed: ${error.value}`;
     }
+    window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
   }
 };
 
