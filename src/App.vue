@@ -80,11 +80,12 @@
           </div>
         </div>
       </main>
-
-      <p v-if="userMessage" class="text-center text-red-400 mt-6 font-medium animate-pulse">
-        {{ userMessage }}
-      </p>
-
+      <p
+  v-if="userMessage"
+  class="text-center text-red-400 mt-6 font-medium animate-pulse"
+>
+  {{ userMessage }}
+</p>
       <transition name="fade">
         <div v-if="error" class="error-message">
           <svg class="error-icon" viewBox="0 0 24 24" fill="#FF6B6B">
@@ -93,13 +94,11 @@
           {{ error }}
         </div>
       </transition>
-
-      <footer class="developer-info">
-        <h4>Made with 💚 by Sufyan</h4>
-        <a class="linkedInButton" href="http://linkedin.com/in/sufyanshaik03/" target="_blank" rel="noopener noreferrer">
-          Get in touch!
-        </a>
-      </footer>
+    </div>
+    <div class="developer-info">
+      <h2>Made by Sufyan :)</h2>
+      <h3>Get in touch with me !</h3>
+      <a class = "linkedInButton" href="linkedin.com/in/sufyanshaik03/">LinkedIn</a>
     </div>
   </div>
 </template>
@@ -125,7 +124,6 @@ const loggedInToSpotify = computed(() => !!accessToken.value && !!userId.value);
 const connectSpotify = () => {
   error.value = null;
   successMessage.value = null;
-  // Make sure this matches your backend route
   window.location.href = '/api/spotify-login'; 
 };
 
@@ -133,26 +131,27 @@ const extractTokensFromUrl = () => {
   const hash = window.location.hash;
 
   if (hash.includes('access_token')) {
-    const params = new URLSearchParams(hash.substring(1)); // Remove '#'
+    const queryStringIndex = hash.indexOf('?');
+    if (queryStringIndex === -1) return;
+
+    const queryString = hash.substring(queryStringIndex + 1);
+    const params = new URLSearchParams(queryString);
     accessToken.value = params.get('access_token');
     refreshToken.value = params.get('refresh_token');
-    // Assuming user_id and username are passed back in the hash
-    userId.value = params.get('user_id'); 
-    userName.value = params.get('username');
+    userId.value = params.get('user_id');
     error.value = params.get('error');
+    userName.value = params.get('username');
 
     if (accessToken.value) sessionStorage.setItem('spotify_access_token', accessToken.value);
     if (refreshToken.value) sessionStorage.setItem('spotify_refresh_token', refreshToken.value);
     if (userId.value) sessionStorage.setItem('spotify_user_id', userId.value);
-    if (userName.value) sessionStorage.setItem('spotify_user_name', userName.value);
 
     if (accessToken.value && userId.value) {
-      successMessage.value = "Successfully connected to Spotify!";
+      successMessage.value = "succefully extracted";
     } else if (error.value) {
       error.value = `Connection failed: ${error.value}`;
     }
-    // Clean the URL
-    window.history.replaceState({}, document.title, window.location.pathname);
+    window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
   }
 };
 
@@ -160,7 +159,6 @@ const loadTokensFromSessionStorage = () => {
   accessToken.value = sessionStorage.getItem('spotify_access_token');
   refreshToken.value = sessionStorage.getItem('spotify_refresh_token');
   userId.value = sessionStorage.getItem('spotify_user_id');
-  userName.value = sessionStorage.getItem('spotify_user_name');
 };
 
 const generatePlaylist = async () => {
@@ -197,13 +195,10 @@ const generatePlaylist = async () => {
 };
 
 onMounted(() => {
+  loadTokensFromSessionStorage();
   extractTokensFromUrl();
-  if (!accessToken.value) {
-    loadTokensFromSessionStorage();
-  }
 });
 </script>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -395,7 +390,6 @@ h2 {
   width: 20px;
   height: 20px;
   animation: rotate 1s linear infinite;
-  margin: 0 auto;
 }
 
 .spinner circle {
@@ -529,39 +523,39 @@ h3 {
   width: 20px;
   height: 20px;
 }
-
-/* MODIFIED DEVELOPER INFO STYLES */
 .developer-info {
   text-align: center;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--spotify-dark-gray);
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 2px solid #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.developer-info h4 {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--spotify-gray);
-  margin-bottom: 1rem;
+.developer-info h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.developer-info h3 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
 }
 
 .linkedInButton {
   display: inline-block;
-  padding: 0.5rem 1.25rem;
-  background-color: transparent;
-  color: var(--spotify-light);
+  padding: 10px 20px;
+  background-color: #0077b5; 
+  color: white;
   text-decoration: none;
-  border-radius: 500px;
-  font-weight: 600;
-  transition: all 0.2s ease-in-out;
-  border: 1px solid var(--spotify-dark-gray);
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .linkedInButton:hover {
-  background-color: var(--spotify-green);
-  border-color: var(--spotify-green);
-  color: var(--spotify-light);
-  transform: scale(1.05);
+  background-color: #005582;
 }
 
 @keyframes fadeIn {
