@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     const username = userProfile.data.display_name;
 
     // IMPORTANT: add vercel domain
-    res.redirect(`https://your-vercel-domain.vercel.app/#/authorized?access_token=${access_token}&refresh_token=${refresh_token}&user_id=${userId}&username=${username}`);
+    res.redirect(`https://playlistr-chi.vercel.app/#/authorized?access_token=${access_token}&refresh_token=${refresh_token}&user_id=${userId}&username=${username}`);
   } catch (error) {
     res.redirect('/#' + new URLSearchParams({ error: 'token_exchange_failed' }).toString());
   }
