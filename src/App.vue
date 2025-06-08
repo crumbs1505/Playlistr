@@ -126,7 +126,7 @@ const connectSpotify = () => {
   error.value = null;
   successMessage.value = null;
   // Make sure this matches your backend route
-  window.location.href = 'http://localhost:3000/api/spotify-login'; 
+  window.location.href = '/api/spotify-login'; 
 };
 
 const extractTokensFromUrl = () => {
