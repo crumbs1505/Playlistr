@@ -20,36 +20,22 @@ export default async function handler(req, res) {
     if (params.artists?.length) {
       searchQuery += ` ${params.artists.join(' ')} `;
       playlistName += `${params.artists.join(', ')} Mix`;
+      playlistDescription+=` Featuring artists like ${params.artists.join(', ')}.`;
     }
-    if (params.genre) searchQuery += ` ${params.genre} `;
-    if (params.subgenres?.length) searchQuery += ` ${params.subgenres.join(' ')} `;
-    if (params.moods?.length) {
-      searchQuery += `${params.moods.join(' ')} `;
-      playlistDescription += `Mood: ${params.moods.join(', ')}. `;
+    if (params.search_terms && params.search_terms.length > 0) {
+    
+    
+    searchQuery += ` ${params.search_terms.join(' ')}`;
+    
+    if (playlistName === "Playlistr Generated Playlist") {
+        
+        playlistName = params.search_terms[0].split(' ')
+                                            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                            .join(' ') + " Playlist";
     }
-    if (params.activities?.length) {
-      searchQuery += `${params.activities.join(' ')} `;
-      playlistDescription += `Activities: ${params.activities.join(', ')}. `;
-    }
-    if (params.era) {
-      searchQuery += `${params.era} `;
-      playlistDescription += `Era: ${params.era}. `;
-    }
-    if (params.language) {
-      searchQuery += `${params.language} `;
-      playlistDescription += `Language: ${params.language}. `;
-    }
-    if (params.characteristics?.length) {
-      searchQuery += `${params.characteristics.join(' ')} `;
-      playlistDescription += `Vibe: ${params.characteristics.join(', ')}. `;
-    }
+    playlistDescription += ` Vibes: ${params.search_terms.join(', ')}.`;
+}
     searchQuery = searchQuery.trim();
-
-    if (playlistName === "Playlistr Generated Playlist" && params.genres && params.genres.length > 0) {
-      playlistName = `${params.genres.join(', ')} Vibes`;
-    } else if (playlistName === "Playlistr Generated Playlist" && params.moods && params.moods.length > 0) {
-      playlistName = `${params.moods.join(' ')} Playlist`;
-    }
 
     const headers = { 'Authorization': 'Bearer ' + access_token };
 
@@ -81,7 +67,7 @@ export default async function handler(req, res) {
         headers,
         params: {
           q: 'top hits',
-          type: 'track',
+          type: 'track,playlist',
           limit: 10
         }
       });
