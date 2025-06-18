@@ -36,7 +36,7 @@ This project simplifies building music discovery applications with features like
 -   **Modular Design**: Supports scalable development and easy customization.
 
 ---
-##Video Demo (because spotify only allows 25 test users to use their api 😢)
+## Video Demo (because spotify only allows 25 test users to use their api 😢)
 
 https://github.com/user-attachments/assets/0bba5e73-addb-4550-ba6c-008517f62737
 
